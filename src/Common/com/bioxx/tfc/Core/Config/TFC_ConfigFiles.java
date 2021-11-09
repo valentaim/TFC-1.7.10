@@ -67,7 +67,7 @@ public class TFC_ConfigFiles
 	private static final String[] COLOR_CATEGORIES = {COLOR_NUTRIENT_A, COLOR_NUTRIENT_B, COLOR_NUTRIENT_C, CROP_FERTILIZER_COLOR, ANVIL_RULE_COLOR0, ANVIL_RULE_COLOR1, ANVIL_RULE_COLOR2};
 
 	// Used as allowed values for Ore
-	private static final String[] ALLOWED_TYPES = new String[] {"default", "veins"};
+	private static final String[] ALLOWED_TYPES = new String[] {"default", "veins", "vein", "area", "lens"};
 	private static final String[] ALLOWED_SIZES = new String[] {"small", "medium", "large"};
 	private static final String[] ALLOWED_BASE_ROCKS = ObjectArrays.concat(Global.STONE_ALL, new String[] {"igneous intrusive", "igneous extrusive", "sedimentary", "metamorphic"}, String.class);
 
