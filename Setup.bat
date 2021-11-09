@@ -1,1 +1,1 @@
-gradlew.bat setupdecompworkspace eclipse
+gradlew.bat setupdecompworkspace idea
