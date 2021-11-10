@@ -127,88 +127,88 @@ public class WorldGenOre implements IWorldGenerator
 	{
 		createOreVeins(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/60,/*veinAmt*/45,/*height*/20,/*diameter*/80,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 
 	private void oreSmallVein(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOreVein(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/20,/*veinAmt*/30,/*height*/5,/*diameter*/40,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 
 	private void oreMediumVein(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOreVein(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/30,/*veinAmt*/40,/*height*/10,/*diameter*/60,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 
 	private void oreLargeVein(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOreVein(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/60,/*veinAmt*/45,/*height*/20,/*diameter*/80,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 	private void oreBigVein(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOreVein(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/60,/*veinAmt*/50,/*height*/40,/*diameter*/100,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 
 	private void oreSmallArea(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOre(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/20,/*veinAmt*/30,/*height*/5,/*diameter*/40,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 
 	private void oreMediumArea(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOre(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/30,/*veinAmt*/40,/*height*/10,/*diameter*/60,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 
 	private void oreLargeArea(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOre(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/60,/*veinAmt*/45,/*height*/20,/*diameter*/80,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 	private void oreBigArea(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOre(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/60,/*veinAmt*/45,/*height*/20,/*diameter*/80,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 
 	private void oreSmallLens(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOre(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/20,/*veinAmt*/30,/*height*/5,/*diameter*/40,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 
 	private void oreMediumLens(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOre(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/30,/*veinAmt*/40,/*height*/10,/*diameter*/60,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 
 	private void oreLargeLens(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOre(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/60,/*veinAmt*/45,/*height*/20,/*diameter*/80,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 	private void oreBigLens(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOre(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/60,/*veinAmt*/45,/*height*/20,/*diameter*/80,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 
 	private void oreSmall(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
@@ -236,7 +236,7 @@ public class WorldGenOre implements IWorldGenerator
 	{
 		createOre(block, meta ,baseRocks,
 				/*rarity*/rarity,/*veinSize*/120,/*veinAmt*/50,/*height*/5,/*diameter*/240,/*vDensity*/vDensity,/*hDensity*/hDensity,
-				worldObj, random, chunkX, chunkZ, min, max);
+worldObj, random, chunkX, chunkZ, min, max);
 	}
 
 	private static void createOre(Block block, int j, Map<Block, List<Integer>> layers, int rarity, int veinSize,
