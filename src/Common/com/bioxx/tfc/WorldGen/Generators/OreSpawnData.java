@@ -32,6 +32,12 @@ public class OreSpawnData
 		rarity = r;
 		if ("default".equals(t))
 			type = 0;
+		else if ("veins".equals(t))
+			type = 2;
+		else if ("area".equals(t))
+			type = 3;
+		else if ("lens".equals(t))
+			type = 4;
 		else
 			type = 1;
 
@@ -39,6 +45,8 @@ public class OreSpawnData
 			size = 0;
 		else if ("medium".equals(s))
 			size = 1;
+		else if ("big".equals(s))
+			size = 3;
 		else
 			size = 2;
 

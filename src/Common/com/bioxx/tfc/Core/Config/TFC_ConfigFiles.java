@@ -68,7 +68,7 @@ public class TFC_ConfigFiles
 
 	// Used as allowed values for Ore
 	private static final String[] ALLOWED_TYPES = new String[] {"default", "veins", "vein", "area", "lens"};
-	private static final String[] ALLOWED_SIZES = new String[] {"small", "medium", "large"};
+	private static final String[] ALLOWED_SIZES = new String[] {"small", "medium", "large", "big"};
 	private static final String[] ALLOWED_BASE_ROCKS = ObjectArrays.concat(Global.STONE_ALL, new String[] {"igneous intrusive", "igneous extrusive", "sedimentary", "metamorphic"}, String.class);
 
 	public static final Map<String, SyncingOption> SYNCING_OPTION_MAP = new CaseInsensitiveHashMap<SyncingOption>();
