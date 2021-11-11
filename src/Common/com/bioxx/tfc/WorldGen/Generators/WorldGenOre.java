@@ -207,7 +207,7 @@ worldObj, random, chunkX, chunkZ, min, max);
 	private void oreBigLens(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOreLens(block, meta ,baseRocks,
-				/*rarity*/rarity,/*veinSize*/120,/*veinAmt*/60,/*height*/40,/*diameter*/120,/*vDensity*/vDensity,/*hDensity*/hDensity,
+				/*rarity*/rarity,/*veinSize*/120,/*veinAmt*/1,/*height*/20,/*diameter*/120,/*vDensity*/vDensity,/*hDensity*/hDensity,
 worldObj, random, chunkX, chunkZ, min, max);
 	}
 
@@ -359,7 +359,7 @@ worldObj, random, chunkX, chunkZ, min, max);
 						else
 							grade = 0;
 
-						new WorldGenMinable(block, j, b, metadata, rarity, veinSize, veinAmount, height, diameter, vDensity, hDensity, true, grade)
+						new WorldGenMinable(block, j, b, metadata, rarity, veinSize, veinAmount, height, diameter, vDensity, hDensity, false, grade)
 								.generate(world, rand, chunkX, chunkZ, min, max);
 					}
 				}
@@ -391,7 +391,7 @@ worldObj, random, chunkX, chunkZ, min, max);
 						else
 							grade = 0;
 
-						new WorldGenMinable(block, j, b, metadata, rarity, veinSize, veinAmount, height, diameter, vDensity, hDensity, true, grade)
+						new WorldGenMinable(block, j, b, metadata, rarity, veinSize, veinAmount, height, diameter, vDensity, hDensity, false, grade)
 								.generate(world, rand, chunkX, chunkZ, min, max);
 					}
 				}
