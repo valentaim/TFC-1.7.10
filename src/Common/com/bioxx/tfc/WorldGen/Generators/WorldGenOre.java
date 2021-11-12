@@ -246,7 +246,7 @@ worldObj, random, chunkX, chunkZ, min, max);
 		{
 			for(Block b : layers.keySet())
 			{
-				for(int metadata : layers.get(b))
+				for (int metadata : layers.get(b))
 				{
 					DataLayer rockLayer1 = TFC_Climate.getCacheManager(world).getRockLayerAt(chunkX, chunkZ, 0);
 					DataLayer rockLayer2 = TFC_Climate.getCacheManager(world).getRockLayerAt(chunkX, chunkZ, 1);
@@ -255,10 +255,11 @@ worldObj, random, chunkX, chunkZ, min, max);
 						rockLayer2.block == b && (rockLayer2.data2 == metadata || metadata == -1) ||
 						rockLayer3.block == b && (rockLayer3.data2 == metadata || metadata == -1))
 					{
+						//Random ore grade (poor etc.)
 						int grade = rand.nextInt(100);
-						if(grade<20)
+						if (grade < 20)
 							grade = 1;
-						else if(grade <50)
+						else if (grade < 50)
 							grade = 2;
 						else
 							grade = 0;
