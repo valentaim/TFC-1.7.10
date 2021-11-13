@@ -58,7 +58,7 @@ public class WorldGenMinable extends WorldGenerator
 	private final int hDens;
 	private final Block genInBlock;
 	private final int genInBlockMeta;
-	private final boolean useMarcoVeins;
+	private final String useMarcoVeins;
 	private final int grade;
 
 	//==========================================mp mod
@@ -66,7 +66,7 @@ public class WorldGenMinable extends WorldGenerator
 	private int numberOfBlocks;
 
 	public WorldGenMinable(Block block, int j, Block layerBlock, int layerMeta, int rarity, int veinSize,
-			int veinAmount, int height, int diameter, int vDensity, int hDensity, boolean vein, int oreGrade)
+			int veinAmount, int height, int diameter, int vDensity, int hDensity, String vein, int oreGrade)
 	{
 		/*int emptyHolder = 0;
 		emptyHolder = j;*/
@@ -101,14 +101,22 @@ public class WorldGenMinable extends WorldGenerator
 		{
 			int temp1 = mPCalculateDensity(diameter, hDens);
 			int temp2 = mineHeight + mPCalculateDensity(height, vDens);
-			int temp3 = mPCalculateDensity(diameter, hDens);
+//			int temp3 = mPCalculateDensity(diameter, hDens);
 			int posX = x + temp1;
 			int posY = temp2;
-			int posZ = z + temp3;
-			if (!useMarcoVeins)
+//			int posZ = z + temp3;
+			int posZ = z + temp1;
+			if (useMarcoVeins.equals("default"))
 				bODgenerate(worldObj, rand, posX, posY, posZ, veinSi); // generate based on values
-			else
+			else if (useMarcoVeins.equals("veins"))
+				bODgenerateVeins(worldObj, rand, posX, posY, posZ, veinSi);
+			else if (useMarcoVeins.equals("vein"))
 				bODgenerateVein(worldObj, rand, posX, posY, posZ, veinSi);
+			else if (useMarcoVeins.equals("area"))
+				bODgenerateArea(worldObj, rand, posX, posY, posZ, veinSi);
+			else if (useMarcoVeins.equals("lens"))
+				bODgenerateLens(worldObj, rand, posX, posY, posZ, veinSi);
+
 		}
 	}
 
@@ -163,6 +171,252 @@ public class WorldGenMinable extends WorldGenerator
 			loopCount = loopCount - 1; // decriment loop
 		}
 		return densityValuePass; // return proccesed random value
+	}
+
+	public boolean bODgenerateVeins(World world, Random rand, int parX, int parY, int parZ, int xyz)
+	{
+		//==========================================mp mod
+		int posX = parX;
+		int posY = parY;
+		int posZ = parZ;
+		/*int tempPosX = 0;
+		int tempPosY = 0;
+		int tempPosZ = 0;*/
+		int posX2 = 0;
+		int posY2 = 0;
+		int posZ2 = 0;
+		int directionX = 0;
+		int directionY = 0;
+		int directionZ = 0;
+		int directionX2 = 0;
+		int directionY2 = 0;
+		int directionZ2 = 0;
+		/*int directionX3 = 0;
+		int directionY3 = 0;
+		int directionZ3 = 0;*/
+		int directionChange = 0;
+		int directionChange2 = 0;
+		int blocksToUse = xyz;//input number of blocks per vein
+		int blocksToUse2 = 0;
+
+		for(int blocksMade = 0; blocksMade <= blocksToUse;) // make veins
+		{
+			blocksToUse2 = 1 + (blocksToUse / 30);
+			directionChange = rand.nextInt(6);
+			directionX = rand.nextInt(2);
+			directionY = rand.nextInt(2);
+			directionZ = rand.nextInt(2);
+
+			for(int blocksMade1 = 0; blocksMade1 <= blocksToUse2; ) // make branch
+			{
+				if(directionX == 0 && directionChange != 1)
+					posX = posX + rand.nextInt(2);
+				if(directionX == 1 && directionChange != 1)
+					posX = posX - rand.nextInt(2);
+				if(directionY == 0 && directionChange != 2)
+					posY = posY + rand.nextInt(2);
+				if(directionY == 1 && directionChange != 2)
+					posY = posY - rand.nextInt(2);
+				if(directionZ == 0 && directionChange != 3)
+					posZ = posZ + rand.nextInt(2);
+				if(directionZ == 1 && directionChange != 3)
+					posZ = posZ - rand.nextInt(2);
+				if(rand.nextInt(4) == 0)
+				{
+					posX2 = posX2 + rand.nextInt(2);
+					posY2 = posY2 + rand.nextInt(2);
+					posZ2 = posZ2 + rand.nextInt(2);
+					posX2 = posX2 - rand.nextInt(2);
+					posY2 = posY2 - rand.nextInt(2);
+					posZ2 = posZ2 - rand.nextInt(2);
+				}
+				if(rand.nextInt(3) == 0) // make sub-branch
+				{
+					posX2 = posX;
+					posY2 = posY;
+					posZ2 = posZ;
+					directionX2 = rand.nextInt(2);
+					directionY2 = rand.nextInt(2);
+					directionZ2 = rand.nextInt(2);
+					directionChange2 = rand.nextInt(6);
+					if(directionX2 == 0 && directionChange2 != 0)
+						posX2 = posX2 + rand.nextInt(2);
+					if(directionY2 == 0 && directionChange2 != 1)
+						posY2 = posY2 + rand.nextInt(2);
+					if(directionZ2 == 0 && directionChange2 != 2)
+						posZ2 = posZ2 + rand.nextInt(2);
+					if(directionX2 == 1 && directionChange2 != 0)
+						posX2 = posX2 - rand.nextInt(2);
+					if(directionY2 == 1 && directionChange2 != 1)
+						posY2 = posY2 - rand.nextInt(2);
+					if(directionZ2 == 1 && directionChange2 != 2)
+						posZ2 = posZ2 - rand.nextInt(2);
+
+					for(int blocksMade2 = 0; blocksMade2 <= (1 + (blocksToUse2 / 5)); )
+					{
+						if(directionX2 == 0 && directionChange2 != 0)
+							posX2 = posX2 + rand.nextInt(2);
+						if(directionY2 == 0 && directionChange2 != 1)
+							posY2 = posY2 + rand.nextInt(2);
+						if(directionZ2 == 0 && directionChange2 != 2)
+							posZ2 = posZ2 + rand.nextInt(2);
+						if(directionX2 == 1 && directionChange2 != 0)
+							posX2 = posX2 - rand.nextInt(2);
+						if(directionY2 == 1 && directionChange2 != 1)
+							posY2 = posY2 - rand.nextInt(2);
+						if(directionZ2 == 1 && directionChange2 != 2)
+							posZ2 = posZ2 - rand.nextInt(2);
+
+						boolean isCorrectRockType = false;
+						boolean isCorrectMeta = false;
+						int localX = posX & 15;
+						int localZ = posZ & 15;
+
+						ChunkData data = TFC_Core.getCDM(world).getData(posX >> 4, posZ >> 4);
+						int hm = data != null ? data.heightmap[localX + localZ * 16] : 0;
+						posY = Math.min(255, posY + hm);
+
+						int m = world.getBlockMetadata(posX, posY, posZ);
+						Block b = world.getBlock(posX, posY, posZ);
+						isCorrectRockType = b == this.genInBlock;
+						isCorrectMeta = m == this.genInBlockMeta || this.genInBlockMeta == -1;
+
+						if (isCorrectRockType && isCorrectMeta)
+						{
+							if (mPBlock != null && world.setBlock(posX, posY, posZ, mPBlock, minableBlockMeta, 2))
+							{
+								TEOre te = (TEOre)world.getTileEntity(posX, posY, posZ);
+								if(te!= null)
+								{
+									te.baseBlockID = Block.getIdFromBlock(b);
+									te.baseBlockMeta = m;
+									te.extraData = (byte)(grade+8);
+								}
+							}
+						}
+						blocksMade++;
+						blocksMade1++;
+						blocksMade2++;
+					}
+				}
+
+				int localX = posX & 15;
+				int localZ = posZ & 15;
+				ChunkData data = TFC_Core.getCDM(world).getData(posX >> 4, posZ >> 4);
+				int hm = data != null ? data.heightmap[localX + localZ * 16] : 0;
+				posY = Math.min(255, posY + hm);
+
+				int m = world.getBlockMetadata(posX, posY, posZ);
+				Block b = world.getBlock(posX, posY, posZ);
+				boolean isCorrectRockType = b == this.genInBlock;
+				boolean isCorrectMeta = m == this.genInBlockMeta || this.genInBlockMeta == -1;
+
+//				if (isCorrectRockType && isCorrectMeta)
+				if (posY < 128 && posY > 3)
+				{
+					if (mPBlock != null && world.setBlock(posX, posY, posZ, mPBlock, minableBlockMeta, 2))
+					{
+						TEOre te = (TEOre) world.getTileEntity(posX, posY, posZ);
+						if (te != null)
+						{
+							te.baseBlockID = Block.getIdFromBlock(b);
+							te.baseBlockMeta = m;
+							te.extraData = (byte) grade;
+						}
+					}
+				}
+				blocksMade++;
+				blocksMade1++;
+			}
+
+			parX = parX + (rand.nextInt(3) - 1);
+			parY = parY + (rand.nextInt(3) - 1);
+			parZ = parZ + (rand.nextInt(3) - 1);
+			posX = parX;
+			posY = parY;
+			posZ = parZ;
+		}
+		return true;
+	}
+
+	public boolean bODgenerate(World world, Random rand, int par3, int par4, int par5, int xyz)
+	{
+		//==========================================mp mod
+		numberOfBlocks = xyz; //input number of blocks per vein
+
+		//==========================================mp mod
+		float var6 = rand.nextFloat() * (float)Math.PI;
+		double var7 = par3 + 8 + MathHelper.sin(var6) * numberOfBlocks / 8.0F;
+		double var9 = par3 + 8 - MathHelper.sin(var6) * numberOfBlocks / 8.0F;
+		double var11 = par5 + 8 + MathHelper.cos(var6) * numberOfBlocks / 8.0F;
+		double var13 = par5 + 8 - MathHelper.cos(var6) * numberOfBlocks / 8.0F;
+		double var15 = par4 + rand.nextInt(3) - 2;
+		double var17 = par4 + rand.nextInt(3) - 2;
+
+		for (int var19 = 0; var19 <= numberOfBlocks; ++var19)
+		{
+			double var20 = var7 + (var9 - var7) * var19 / numberOfBlocks;
+			double var22 = var15 + (var17 - var15) * var19 / numberOfBlocks;
+			double var24 = var11 + (var13 - var11) * var19 / numberOfBlocks;
+			double var26 = rand.nextDouble() * this.numberOfBlocks / 16.0D;
+			double var28 = (MathHelper.sin(var19 * (float)Math.PI / numberOfBlocks) + 1.0F) * var26 + 1.0D;
+			double var30 = (MathHelper.sin(var19 * (float)Math.PI / numberOfBlocks) + 1.0F) * var26 + 1.0D;
+			int var32 = MathHelper.floor_double(var20 - var28 / 2.0D);
+			int var33 = MathHelper.floor_double(var22 - var30 / 2.0D);
+			int var34 = MathHelper.floor_double(var24 - var28 / 2.0D);
+			int var35 = MathHelper.floor_double(var20 + var28 / 2.0D);
+			int var36 = MathHelper.floor_double(var22 + var30 / 2.0D);
+			int var37 = MathHelper.floor_double(var24 + var28 / 2.0D);
+
+			for (int posX = var32; posX <= var35; ++posX)
+			{
+				double var39 = (posX + 0.5D - var20) / (var28 / 2.0D);
+				if (var39 * var39 < 1.0D)
+				{
+					for (int posY = var33; posY <= var36; ++posY)
+					{
+						double var42 = (posY + 0.5D - var22) / (var30 / 2.0D);
+						if (var39 * var39 + var42 * var42 < 1.0D)
+						{
+							for (int posZ = var34; posZ <= var37; ++posZ)
+							{
+								double var45 = (posZ + 0.5D - var24) / (var28 / 2.0D);
+								int localX = posX & 15;
+								int localZ = posZ & 15;
+								ChunkData data = TFC_Core.getCDM(world).getData(posX >> 4, posZ >> 4);
+								int hm = data != null ? data.heightmap[localX + localZ * 16] : 0;
+								posY = Math.min(255, posY + hm);
+
+								int m = world.getBlockMetadata(posX, posY, posZ);
+								Block b = world.getBlock(posX, posY, posZ);
+								boolean isCorrectRockType = b == this.genInBlock;
+								boolean isCorrectMeta = m == this.genInBlockMeta || this.genInBlockMeta == -1;
+
+//								if (isCorrectRockType && isCorrectMeta)
+								if (posY < 128 && posY > 3)
+								{
+									if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D)
+									{
+										if (mPBlock != null && world.setBlock(posX, posY, posZ, mPBlock, minableBlockMeta, 2))
+										{
+											TEOre te = (TEOre) world.getTileEntity(posX, posY, posZ);
+											if (te != null)
+											{
+												te.baseBlockID = Block.getIdFromBlock(b);
+												te.baseBlockMeta = m;
+												te.extraData = (byte) grade;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		//TerraFirmaCraft.log.info("a vein was placed " + minableBlockId + "." + minableBlockMeta+ " at " + par3 +" "+par4+" "+par5); /// for debugging
+		return true;
 	}
 
 	public boolean bODgenerateVein(World world, Random rand, int parX, int parY, int parZ, int xyz)
@@ -304,7 +558,7 @@ public class WorldGenMinable extends WorldGenerator
 				boolean isCorrectMeta = m == this.genInBlockMeta || this.genInBlockMeta == -1;
 
 //				if (isCorrectRockType && isCorrectMeta)
-				if (posY < 128)
+				if (posY < 128 && posY > 3)
 				{
 					if (mPBlock != null && world.setBlock(posX, posY, posZ, mPBlock, minableBlockMeta, 2))
 					{
@@ -331,7 +585,7 @@ public class WorldGenMinable extends WorldGenerator
 		return true;
 	}
 
-	public boolean bODgenerate(World world, Random rand, int par3, int par4, int par5, int xyz)
+	public boolean bODgenerateArea(World world, Random rand, int par3, int par4, int par5, int xyz)
 	{
 		//==========================================mp mod
 		numberOfBlocks = xyz; //input number of blocks per vein
@@ -385,7 +639,7 @@ public class WorldGenMinable extends WorldGenerator
 								boolean isCorrectMeta = m == this.genInBlockMeta || this.genInBlockMeta == -1;
 
 //								if (isCorrectRockType && isCorrectMeta)
-								if (posY < 128)
+								if (posY < 128 && posY > 3)
 								{
 									if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D)
 									{
@@ -408,6 +662,172 @@ public class WorldGenMinable extends WorldGenerator
 			}
 		}
 		//TerraFirmaCraft.log.info("a vein was placed " + minableBlockId + "." + minableBlockMeta+ " at " + par3 +" "+par4+" "+par5); /// for debugging
+		return true;
+	}
+
+	public boolean bODgenerateLens(World world, Random rand, int parX, int parY, int parZ, int xyz)
+	{
+		//==========================================mp mod
+		int posX = parX;
+		int posY = parY;
+		int posZ = parZ;
+		/*int tempPosX = 0;
+		int tempPosY = 0;
+		int tempPosZ = 0;*/
+		int posX2 = 0;
+		int posY2 = 0;
+		int posZ2 = 0;
+		int directionX = 0;
+		int directionY = 0;
+		int directionZ = 0;
+		int directionX2 = 0;
+		int directionY2 = 0;
+		int directionZ2 = 0;
+		/*int directionX3 = 0;
+		int directionY3 = 0;
+		int directionZ3 = 0;*/
+		int directionChange = 0;
+		int directionChange2 = 0;
+		int blocksToUse = xyz;//input number of blocks per vein
+		int blocksToUse2 = 0;
+
+		for(int blocksMade = 0; blocksMade <= blocksToUse;) // make veins
+		{
+			blocksToUse2 = 1 + (blocksToUse / 30);
+			directionChange = rand.nextInt(6);
+			directionX = rand.nextInt(2);
+			directionY = rand.nextInt(2);
+			directionZ = rand.nextInt(2);
+
+			for(int blocksMade1 = 0; blocksMade1 <= blocksToUse2; ) // make branch
+			{
+				if(directionX == 0 && directionChange != 1)
+					posX = posX + rand.nextInt(2);
+				if(directionX == 1 && directionChange != 1)
+					posX = posX - rand.nextInt(2);
+				if(directionY == 0 && directionChange != 2)
+					posY = posY + rand.nextInt(2);
+				if(directionY == 1 && directionChange != 2)
+					posY = posY - rand.nextInt(2);
+				if(directionZ == 0 && directionChange != 3)
+					posZ = posZ + rand.nextInt(2);
+				if(directionZ == 1 && directionChange != 3)
+					posZ = posZ - rand.nextInt(2);
+				if(rand.nextInt(4) == 0)
+				{
+					posX2 = posX2 + rand.nextInt(2);
+					posY2 = posY2 + rand.nextInt(2);
+					posZ2 = posZ2 + rand.nextInt(2);
+					posX2 = posX2 - rand.nextInt(2);
+					posY2 = posY2 - rand.nextInt(2);
+					posZ2 = posZ2 - rand.nextInt(2);
+				}
+				if(rand.nextInt(3) == 0) // make sub-branch
+				{
+					posX2 = posX;
+					posY2 = posY;
+					posZ2 = posZ;
+					directionX2 = rand.nextInt(2);
+					directionY2 = rand.nextInt(2);
+					directionZ2 = rand.nextInt(2);
+					directionChange2 = rand.nextInt(6);
+					if(directionX2 == 0 && directionChange2 != 0)
+						posX2 = posX2 + rand.nextInt(2);
+					if(directionY2 == 0 && directionChange2 != 1)
+						posY2 = posY2 + rand.nextInt(2);
+					if(directionZ2 == 0 && directionChange2 != 2)
+						posZ2 = posZ2 + rand.nextInt(2);
+					if(directionX2 == 1 && directionChange2 != 0)
+						posX2 = posX2 - rand.nextInt(2);
+					if(directionY2 == 1 && directionChange2 != 1)
+						posY2 = posY2 - rand.nextInt(2);
+					if(directionZ2 == 1 && directionChange2 != 2)
+						posZ2 = posZ2 - rand.nextInt(2);
+
+					for(int blocksMade2 = 0; blocksMade2 <= (1 + (blocksToUse2 / 5)); )
+					{
+						if(directionX2 == 0 && directionChange2 != 0)
+							posX2 = posX2 + rand.nextInt(2);
+						if(directionY2 == 0 && directionChange2 != 1)
+							posY2 = posY2 + rand.nextInt(2);
+						if(directionZ2 == 0 && directionChange2 != 2)
+							posZ2 = posZ2 + rand.nextInt(2);
+						if(directionX2 == 1 && directionChange2 != 0)
+							posX2 = posX2 - rand.nextInt(2);
+						if(directionY2 == 1 && directionChange2 != 1)
+							posY2 = posY2 - rand.nextInt(2);
+						if(directionZ2 == 1 && directionChange2 != 2)
+							posZ2 = posZ2 - rand.nextInt(2);
+
+						boolean isCorrectRockType = false;
+						boolean isCorrectMeta = false;
+						int localX = posX & 15;
+						int localZ = posZ & 15;
+
+						ChunkData data = TFC_Core.getCDM(world).getData(posX >> 4, posZ >> 4);
+						int hm = data != null ? data.heightmap[localX + localZ * 16] : 0;
+						posY = Math.min(255, posY + hm);
+
+						int m = world.getBlockMetadata(posX, posY, posZ);
+						Block b = world.getBlock(posX, posY, posZ);
+						isCorrectRockType = b == this.genInBlock;
+						isCorrectMeta = m == this.genInBlockMeta || this.genInBlockMeta == -1;
+
+						if (isCorrectRockType && isCorrectMeta)
+						{
+							if (mPBlock != null && world.setBlock(posX, posY, posZ, mPBlock, minableBlockMeta, 2))
+							{
+								TEOre te = (TEOre)world.getTileEntity(posX, posY, posZ);
+								if(te!= null)
+								{
+									te.baseBlockID = Block.getIdFromBlock(b);
+									te.baseBlockMeta = m;
+									te.extraData = (byte)(grade+8);
+								}
+							}
+						}
+						blocksMade++;
+						blocksMade1++;
+						blocksMade2++;
+					}
+				}
+
+				int localX = posX & 15;
+				int localZ = posZ & 15;
+				ChunkData data = TFC_Core.getCDM(world).getData(posX >> 4, posZ >> 4);
+				int hm = data != null ? data.heightmap[localX + localZ * 16] : 0;
+				posY = Math.min(255, posY + hm);
+
+				int m = world.getBlockMetadata(posX, posY, posZ);
+				Block b = world.getBlock(posX, posY, posZ);
+				boolean isCorrectRockType = b == this.genInBlock;
+				boolean isCorrectMeta = m == this.genInBlockMeta || this.genInBlockMeta == -1;
+
+//				if (isCorrectRockType && isCorrectMeta)
+				if (posY < 128 && posY > 3)
+				{
+					if (mPBlock != null && world.setBlock(posX, posY, posZ, mPBlock, minableBlockMeta, 2))
+					{
+						TEOre te = (TEOre) world.getTileEntity(posX, posY, posZ);
+						if (te != null)
+						{
+							te.baseBlockID = Block.getIdFromBlock(b);
+							te.baseBlockMeta = m;
+							te.extraData = (byte) grade;
+						}
+					}
+				}
+				blocksMade++;
+				blocksMade1++;
+			}
+
+			parX = parX + (rand.nextInt(3) - 1);
+			parY = parY + (rand.nextInt(3) - 1);
+			parZ = parZ + (rand.nextInt(3) - 1);
+			posX = parX;
+			posY = parY;
+			posZ = parZ;
+		}
 		return true;
 	}
 
