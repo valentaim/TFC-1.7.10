@@ -273,7 +273,8 @@ public class WorldGenMinable extends WorldGenerator
 						isCorrectRockType = b == this.genInBlock;
 						isCorrectMeta = m == this.genInBlockMeta || this.genInBlockMeta == -1;
 
-						if (isCorrectRockType && isCorrectMeta)
+//						if (isCorrectRockType && isCorrectMeta)
+						if (posY < 128 && posY > 3)
 						{
 							if (mPBlock != null && world.setBlock(posX, posY, posZ, mPBlock, minableBlockMeta, 2))
 							{
@@ -383,7 +384,8 @@ public class WorldGenMinable extends WorldGenerator
 								boolean isCorrectRockType = b == this.genInBlock;
 								boolean isCorrectMeta = m == this.genInBlockMeta || this.genInBlockMeta == -1;
 
-								if (isCorrectRockType && isCorrectMeta)
+//								if (isCorrectRockType && isCorrectMeta)
+								if (posY < 128 && posY > 3)
 								{
 									if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D)
 									{
