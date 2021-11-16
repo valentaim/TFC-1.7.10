@@ -39,7 +39,7 @@ public class TFCBiome extends BiomeGenBase
 	public static final TFCBiome DEEP_OCEAN = new TFCBiome(36).setBiomeName("Deep Ocean").setMinMaxHeight(-1.5F, 0.00001F).setBiomeColor(0x0e055a);
 	public static final TFCBiome LAKE = new TFCBiome(2).setBiomeName("Lake").setMinMaxHeight(-0.5F, 0.001F).setBiomeColor(0x4a8e9e).setLilyPads(2);
 
-//	protected static WorldGenAcaciaKoaTrees worldGenAcaciaKoaTrees;
+	protected static WorldGenAcaciaKoaTrees worldGenAcaciaKoaTrees;
 	protected static WorldGenCustomTallTrees worldGenAshTallTrees;
 	protected static WorldGenCustomTallTrees worldGenAspenTallTrees;
 	protected static WorldGenCustomTallTrees worldGenBirchTallTrees;
@@ -85,7 +85,7 @@ public class TFCBiome extends BiomeGenBase
 		this.spawnableCreatureList = new ArrayList<SpawnListEntry>();
 		this.spawnableWaterCreatureList = new ArrayList<SpawnListEntry>();
 
-//		worldGenAcaciaKoaTrees = new WorldGenAcaciaKoaTrees(false,0);
+		worldGenAcaciaKoaTrees = new WorldGenAcaciaKoaTrees(false,0);
 		worldGenAshTallTrees = new WorldGenCustomTallTrees(false,7);
 		worldGenAspenTallTrees = new WorldGenCustomTallTrees(false,1);
 		worldGenBirchTallTrees = new WorldGenCustomTallTrees(false,2);
@@ -334,10 +334,10 @@ public class TFCBiome extends BiomeGenBase
 		{
 			return new WorldGenCustomShortTrees(false, 15);
 		}
-//		case 16:
-//		{
-//			return worldGenAcaciaKoaTrees;
-//		}
+		case 16:
+		{
+			return worldGenAcaciaKoaTrees;
+		}
 		}
 		return null;
 	}
