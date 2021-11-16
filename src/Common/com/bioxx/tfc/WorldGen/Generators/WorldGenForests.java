@@ -205,17 +205,17 @@ public class WorldGenForests implements IWorldGenerator
 					completed = true;
 				}
 
-				if(evt <= EnumTree.KOA.maxEVT &&
-						rainfall >= EnumTree.KOA.minRain &&
-						rainfall <= EnumTree.KOA.maxRain && 
-						temperatureAvg >= EnumTree.KOA.minTemp &&
-						temperatureAvg <= EnumTree.KOA.maxTemp)
-				{
-					WorldGenerator gen0 = new WorldGenAcaciaKoaTrees(false, 0);
-
-					gen0.setScale(1.0D, 1.0D, 1.0D);
-					gen0.generate(world, random, xCoord, yCoord, zCoord);
-				}
+//				if(evt <= EnumTree.KOA.maxEVT &&
+//						rainfall >= EnumTree.KOA.minRain &&
+//						rainfall <= EnumTree.KOA.maxRain &&
+//						temperatureAvg >= EnumTree.KOA.minTemp &&
+//						temperatureAvg <= EnumTree.KOA.maxTemp)
+//				{
+//					WorldGenerator gen0 = new WorldGenAcaciaKoaTrees(false, 0);
+//
+//					gen0.setScale(1.0D, 1.0D, 1.0D);
+//					gen0.generate(world, random, xCoord, yCoord, zCoord);
+//				}
 			}
 			catch(IndexOutOfBoundsException e)
 			{
