@@ -63,6 +63,15 @@ public class WorldGenOre implements IWorldGenerator
 				else if(osd.size == 2)
 					oreLargeVein(osd.block, osd.meta, osd.base, osd.rarity, osd.min, osd.max, osd.vDensity, osd.hDensity);
 			}
+			else if(osd.type == 2)
+			{
+				if(osd.size == 0)
+					oreSmallStep(osd.block, osd.meta, osd.base, osd.rarity, osd.min, osd.max, osd.vDensity, osd.hDensity);
+				else if(osd.size == 1)
+					oreMediumStep(osd.block, osd.meta, osd.base, osd.rarity, osd.min, osd.max, osd.vDensity, osd.hDensity);
+				else if(osd.size == 2)
+					oreLargeStep(osd.block, osd.meta, osd.base, osd.rarity, osd.min, osd.max, osd.vDensity, osd.hDensity);
+			}
 		}
 	}
 
@@ -108,6 +117,27 @@ public class WorldGenOre implements IWorldGenerator
  worldObj, random, chunkX, chunkZ, min, max);
 	}
 
+	private void oreSmallStep(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
+	{
+		createOreStep(block, meta ,baseRocks,
+				/*rarity*/rarity,/*veinSize*/20,/*veinAmt*/30,/*height*/5,/*diameter*/40,/*vDensity*/vDensity,/*hDensity*/hDensity,
+				worldObj, random, chunkX, chunkZ, min, max);
+	}
+
+	private void oreMediumStep(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
+	{
+		createOreStep(block, meta ,baseRocks,
+				/*rarity*/rarity,/*veinSize*/30,/*veinAmt*/40,/*height*/10,/*diameter*/60,/*vDensity*/vDensity,/*hDensity*/hDensity,
+				worldObj, random, chunkX, chunkZ, min, max);
+	}
+
+	private void oreLargeStep(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
+	{
+		createOreStep(block, meta ,baseRocks,
+				/*rarity*/rarity,/*veinSize*/60,/*veinAmt*/45,/*height*/20,/*diameter*/80,/*vDensity*/vDensity,/*hDensity*/hDensity,
+				worldObj, random, chunkX, chunkZ, min, max);
+	}
+
 	private static void createOre(Block block, int j, Map<Block, List<Integer>> layers, int rarity, int veinSize,
 			int veinAmount, int height, int diameter, int vDensity, int hDensity, World world, Random rand, int chunkX, int chunkZ, int min, int max)
 	{
@@ -132,7 +162,7 @@ public class WorldGenOre implements IWorldGenerator
 						else
 							grade = 0;
 
-						new WorldGenMinable(block, j, b, metadata, rarity, veinSize, veinAmount, height, diameter, vDensity, hDensity, false, grade)
+						new WorldGenMinable(block, j, b, metadata, rarity, veinSize, veinAmount, height, diameter, vDensity, hDensity, "ore", grade)
 								.generate(world, rand, chunkX, chunkZ, min, max);
 					}
 				}
@@ -165,7 +195,39 @@ public class WorldGenOre implements IWorldGenerator
 						else
 							grade = 0;
 
-						new WorldGenMinable(block, j, b, metadata, rarity, veinSize, veinAmount, height, diameter, vDensity, hDensity, true, grade)
+						new WorldGenMinable(block, j, b, metadata, rarity, veinSize, veinAmount, height, diameter, vDensity, hDensity, "vein", grade)
+								.generate(world, rand, chunkX, chunkZ, min, max);
+					}
+				}
+			}
+		}
+	}
+
+	private static void createOreStep(Block block, int j, Map<Block, List<Integer>> layers, int rarity, int veinSize,
+									  int veinAmount, int height, int diameter, int vDensity, int hDensity, World world, Random rand, int chunkX, int chunkZ, int min, int max)
+	{
+		if(world.getWorldChunkManager() instanceof TFCWorldChunkManager)
+		{
+			for(Block b : layers.keySet())
+			{
+				for (int metadata : layers.get(b))
+				{
+					DataLayer rockLayer1 = TFC_Climate.getCacheManager(world).getRockLayerAt(chunkX, chunkZ, 0);
+					DataLayer rockLayer2 = TFC_Climate.getCacheManager(world).getRockLayerAt(chunkX, chunkZ, 1);
+					DataLayer rockLayer3 = TFC_Climate.getCacheManager(world).getRockLayerAt(chunkX, chunkZ, 2);
+					if (rockLayer1.block == b && (rockLayer1.data2 == metadata || metadata == -1) ||
+							rockLayer2.block == b && (rockLayer2.data2 == metadata || metadata == -1) ||
+							rockLayer3.block == b && (rockLayer3.data2 == metadata || metadata == -1))
+					{
+						int grade = rand.nextInt(100);
+						if (grade < 20)
+							grade = 1;
+						else if (grade < 50)
+							grade = 2;
+						else
+							grade = 0;
+
+						new WorldGenMinable(block, j, b, metadata, rarity, veinSize, veinAmount, height, diameter, vDensity, hDensity, "step", grade)
 								.generate(world, rand, chunkX, chunkZ, min, max);
 					}
 				}
