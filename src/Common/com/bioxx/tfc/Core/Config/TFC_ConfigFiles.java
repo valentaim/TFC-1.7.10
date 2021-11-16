@@ -67,7 +67,7 @@ public class TFC_ConfigFiles
 	private static final String[] COLOR_CATEGORIES = {COLOR_NUTRIENT_A, COLOR_NUTRIENT_B, COLOR_NUTRIENT_C, CROP_FERTILIZER_COLOR, ANVIL_RULE_COLOR0, ANVIL_RULE_COLOR1, ANVIL_RULE_COLOR2};
 
 	// Used as allowed values for Ore
-	private static final String[] ALLOWED_TYPES = new String[] {"default", "veins"};
+	private static final String[] ALLOWED_TYPES = new String[] {"default", "veins", "step"};
 	private static final String[] ALLOWED_SIZES = new String[] {"small", "medium", "large"};
 	private static final String[] ALLOWED_BASE_ROCKS = ObjectArrays.concat(Global.STONE_ALL, new String[] {"igneous intrusive", "igneous extrusive", "sedimentary", "metamorphic"}, String.class);
 
@@ -490,7 +490,7 @@ public class TFC_ConfigFiles
 		oreList.put("Native Copper", getOreData("Native Copper", "veins", "large", MOD_ID + ":Ore1", 0, 120, new String[]{"igneous extrusive"}, 5, 128, 80, 60));
 		oreList.put("Native Gold", getOreData("Native Gold", "veins", "large", MOD_ID + ":Ore1", 1, 120, new String[]{"igneous extrusive", "igneous intrusive"}, 5, 128, 80, 60));
 		oreList.put("Platinum", getOreData("Platinum", "veins", "small", MOD_ID + ":Ore1", 2, 150, new String[]{"sedimentary"}, 5, 128, 40, 80));
-		oreList.put("Hematite", getOreData("Hematite", "veins", "medium", MOD_ID + ":Ore1", 3, 125, new String[]{"igneous extrusive"}, 5, 128, 80, 60));
+		oreList.put("Hematite", getOreData("Hematite", "step", "medium", MOD_ID + ":Ore1", 3, 125, new String[]{"igneous extrusive"}, 5, 128, 80, 60));
 		oreList.put("Silver", getOreData("Silver", "veins", "medium", MOD_ID + ":Ore1", 4, 100, new String[]{"granite", "gneiss"}, 5, 128, 80, 60));
 		oreList.put("Cassiterite", getOreData("Cassiterite", "veins", "medium", MOD_ID + ":Ore1", 5, 100, new String[]{"igneous intrusive"}, 5, 128, 80, 60));
 		oreList.put("Galena", getOreData("Galena", "veins", "medium", MOD_ID + ":Ore1", 6, 100, new String[]{"igneous extrusive", "metamorphic", "granite", "limestone"}, 5, 128, 80, 60));
