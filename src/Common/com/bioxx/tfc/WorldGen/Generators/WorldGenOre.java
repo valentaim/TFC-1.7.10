@@ -134,7 +134,7 @@ public class WorldGenOre implements IWorldGenerator
 	private void oreLargeStep(Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int vDensity, int hDensity)
 	{
 		createOreStep(block, meta ,baseRocks,
-				/*rarity*/rarity,/*veinSize*/60,/*veinAmt*/45,/*height*/20,/*diameter*/80,/*vDensity*/vDensity,/*hDensity*/hDensity,
+				/*rarity*/rarity,/*veinSize*/100,/*veinAmt*/1,/*height*/1,/*diameter*/1,/*vDensity*/vDensity,/*hDensity*/hDensity,
 				worldObj, random, chunkX, chunkZ, min, max);
 	}
 
