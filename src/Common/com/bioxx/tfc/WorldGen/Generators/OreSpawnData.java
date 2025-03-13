@@ -12,14 +12,18 @@ import com.bioxx.tfc.Core.TFC_Core;
 import com.bioxx.tfc.api.TFCBlocks;
 import com.bioxx.tfc.api.Constant.Global;
 
+////////////////////////////new ores gen
 public class OreSpawnData
 {
-	public int type, size, meta, rarity, min = 5, max = 128, vDensity, hDensity;
+//	public int type, size, meta, rarity, min = 5, max = 128, vDensity, hDensity;
+    public EnumOreGen type;
+    public int size, meta, rarity, min = 5, max = 128, rnd, SphereXSize, SphereYSize, SphereZSize, VeinWidth, VeinBaseHeight, VeinDownFactor, AreaNumber, AreaMaxDistance, CellSize ;
 	public Block block;
 	public Map<Block, List<Integer>> base;
 
 	public OreSpawnData(String t, String s, String blockName, int m, int r, String[] baseRocks)
 	{
+		if (!TerraFirmaCraft.CLIENT) {
 		block = Block.getBlockFromName(blockName);
 
 		if (block == null)
@@ -30,10 +34,14 @@ public class OreSpawnData
 
 		meta = m;
 		rarity = r;
-		if ("default".equals(t))
+/*		if ("default".equals(t))
 			type = 0;
 		else
 			type = 1;
+*/
+		try {
+			type = EnumOreGen.getOreType(t);
+		} catch (OreNameExceptionrion e) {e.printMessage();type = EnumOreGen.values()[0];}
 
 		if ("small".equals(s))
 			size = 0;
@@ -47,15 +55,30 @@ public class OreSpawnData
 		{
 			getOre(name);
 		}
+		}
 	}
 
-	public OreSpawnData(String t, String s, String blockName, int m, int r, String[] baseRocks, int minHeight, int maxHeight, int v, int h)
+//	public OreSpawnData(String t, String s, String blockName, int m, int r, String[] baseRocks, int minHeight, int maxHeight, int v, int h)
+    public OreSpawnData(String t, String s, String blockName, int m, int r, String[] baseRocks, int minHeight, int maxHeight, int rnd, int sxs,
+            int sys, int szs, int vw, int vbh, int vdf, int an, int amd, int cs)
 	{
 		this(t, s, blockName, m, r, baseRocks);
+		if (!TerraFirmaCraft.CLIENT) {
 		min = minHeight;
 		max = maxHeight;
-		vDensity = v;
-		hDensity = h;
+/*		vDensity = v;
+		hDensity = h;*/
+		this.rnd = rnd;
+        SphereXSize = sxs;
+        SphereYSize = sys;
+        SphereZSize = szs;
+        VeinWidth = vw;
+        VeinBaseHeight = vbh;
+        VeinDownFactor = vdf;
+        AreaNumber = an;
+        AreaMaxDistance = amd;
+        CellSize = cs;
+		}
 	}
 
 	private void getOre(String name)
@@ -132,4 +155,36 @@ public class OreSpawnData
 			return;
 		}
 	}
+
+		public enum EnumOreGen {
+
+		Vein, Area, Lens;
+
+		public static EnumOreGen getOreType(String name) throws OreNameExceptionrion {
+			for (EnumOreGen ore : EnumOreGen.values())
+				if (ore.name().equalsIgnoreCase(name)) return ore;
+			throw new OreNameExceptionrion(name);
+		}
+	}
+
+	public static class OreNameExceptionrion extends Exception {
+
+		private static final long serialVersionUID = 5681805256111119369L;
+
+		private final String orename;
+
+		public OreNameExceptionrion(String message) {
+			this.orename = message;
+		}
+
+		public void printMessage() {
+			TerraFirmaCraft.LOG.error("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+			TerraFirmaCraft.LOG.error("!!!!!!!!!!!!!!!!!!!!!!!!!!!! WRONG ORE NAME: ".concat(this.orename).concat("!!!!!!!!!!!!!!!!!!!!!!!!!!!!"));
+			TerraFirmaCraft.LOG.error("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		}
+
+
+
+	}
+
 }

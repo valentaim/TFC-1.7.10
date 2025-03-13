@@ -54,6 +54,8 @@ public class TerraFirmaCraft
 	// The packet pipeline
 	public static final PacketPipeline PACKET_PIPELINE = new PacketPipeline();
 
+	public static final boolean CLIENT = false;
+
 	public TerraFirmaCraft()
 	{
 	}
