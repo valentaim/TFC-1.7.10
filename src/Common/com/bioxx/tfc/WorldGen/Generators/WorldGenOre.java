@@ -16,11 +16,9 @@ import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-////////////////////////////////////////////////////new ore gen
+
 public class WorldGenOre implements IWorldGenerator
 {
-	//private int Min;
-	//private int Max;
 	private int chunkX;
 	private int chunkZ;
 	private World worldObj;
@@ -62,8 +60,6 @@ public class WorldGenOre implements IWorldGenerator
 		}
 	}
 
-//	private static void createOre(Block block, int j, Map<Block, List<Integer>> layers, int rarity, int veinSize,
-//			int veinAmount, int height, int diameter, int vDensity, int hDensity, World world, Random rand, int chunkX, int chunkZ, int min, int max)
     private static void createOre(EnumOreGen type, Block block, int j, Map<Block, List<Integer>> layers, int rarity, int rnd, World world, Random rand, int chunkX,
             int chunkZ, int min, int max, int SphereXSize, int SphereYSize, int SphereZSize, int VeinWidth, int VeinBaseHeight, int VeinDownFactor, int AreaNumber,
             int AreaMaxDistance, int CellSize, String name)

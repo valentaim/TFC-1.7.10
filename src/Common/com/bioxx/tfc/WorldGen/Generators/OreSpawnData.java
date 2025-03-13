@@ -12,10 +12,8 @@ import com.bioxx.tfc.Core.TFC_Core;
 import com.bioxx.tfc.api.TFCBlocks;
 import com.bioxx.tfc.api.Constant.Global;
 
-////////////////////////////new ores gen
 public class OreSpawnData
 {
-//	public int type, size, meta, rarity, min = 5, max = 128, vDensity, hDensity;
     public EnumOreGen type;
     public int size, meta, rarity, min = 5, max = 128, rnd, SphereXSize, SphereYSize, SphereZSize, VeinWidth, VeinBaseHeight, VeinDownFactor, AreaNumber, AreaMaxDistance, CellSize ;
 	public Block block;
@@ -34,11 +32,6 @@ public class OreSpawnData
 
 		meta = m;
 		rarity = r;
-/*		if ("default".equals(t))
-			type = 0;
-		else
-			type = 1;
-*/
 		try {
 			type = EnumOreGen.getOreType(t);
 		} catch (OreNameExceptionrion e) {e.printMessage();type = EnumOreGen.values()[0];}
@@ -58,7 +51,6 @@ public class OreSpawnData
 		}
 	}
 
-//	public OreSpawnData(String t, String s, String blockName, int m, int r, String[] baseRocks, int minHeight, int maxHeight, int v, int h)
     public OreSpawnData(String t, String s, String blockName, int m, int r, String[] baseRocks, int minHeight, int maxHeight, int rnd, int sxs,
             int sys, int szs, int vw, int vbh, int vdf, int an, int amd, int cs)
 	{
@@ -66,8 +58,6 @@ public class OreSpawnData
 		if (!TerraFirmaCraft.CLIENT) {
 		min = minHeight;
 		max = maxHeight;
-/*		vDensity = v;
-		hDensity = h;*/
 		this.rnd = rnd;
         SphereXSize = sxs;
         SphereYSize = sys;
@@ -182,9 +172,5 @@ public class OreSpawnData
 			TerraFirmaCraft.LOG.error("!!!!!!!!!!!!!!!!!!!!!!!!!!!! WRONG ORE NAME: ".concat(this.orename).concat("!!!!!!!!!!!!!!!!!!!!!!!!!!!!"));
 			TerraFirmaCraft.LOG.error("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		}
-
-
-
 	}
-
 }
