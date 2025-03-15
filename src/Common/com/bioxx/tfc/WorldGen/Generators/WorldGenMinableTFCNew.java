@@ -7,7 +7,6 @@ import java.util.Random;
 
 import org.apache.logging.log4j.Logger;
 
-import com.bioxx.tfc.TerraFirmaCraft;
 import com.bioxx.tfc.Blocks.Terrain.BlockIgEx;
 import com.bioxx.tfc.Blocks.Terrain.BlockIgIn;
 import com.bioxx.tfc.Blocks.Terrain.BlockMM;
@@ -114,7 +113,6 @@ public class WorldGenMinableTFCNew extends WorldGenerator
 
         
 	private void createMine(World worldObj, int x, int z, int miny, int maxy) {
-		if (!TerraFirmaCraft.CLIENT) {
 		int posX = x;
 		int posZ = z;
 
@@ -145,12 +143,10 @@ public class WorldGenMinableTFCNew extends WorldGenerator
 		}
 
 		if (TFCOptions.enableDebugMode) logger.warn("Generated " + this.numberOfBlocks + " blocks");
-		}
 	}
 
         public boolean generate(World world, Random random, int x, int z, int min, int max)//obsorb default system
         {
-        	if (!TerraFirmaCraft.CLIENT) {
                 mPChunkX = x;// set output chunk x // snap to grid
                 mPChunkZ = z;// set output chunk z    
                 this.rand = random;
@@ -176,12 +172,10 @@ public class WorldGenMinableTFCNew extends WorldGenerator
                         }
                 }
                 return true;
-        	} return true;
         }
 
         public boolean bODgenerateVein(World world, Random rand, int parX, int parY, int parZ, int xyz)
         {
-        	if (!TerraFirmaCraft.CLIENT) {
                 //==========================================mp mod
                 int posX = parX;
                 int posY = parY + xyz/2;
@@ -206,23 +200,19 @@ public class WorldGenMinableTFCNew extends WorldGenerator
                                 
                 
                 return true;
-        	} return true;
         }
         
         private void drawPlane(World world, int x, int y, int z, boolean [] array, boolean directionxz, int size)
         {
-        	if (!TerraFirmaCraft.CLIENT) {
                 for (int i = 0 ; i < size ; i++)
                         if (directionxz)
                                 drawLine(world, x, y, z + i, array, directionxz);
                         else drawLine(world, x + i, y, z, array, directionxz);
-        	}
-                
+
         }
         
         private void drawLine(World world, int x, int y, int z, boolean [] array, boolean directionxz)
         {
-        	if (!TerraFirmaCraft.CLIENT) {
                 int random = 10;
                 for (int l = 0; l< array.length ; l++)
                 {                       
@@ -252,7 +242,6 @@ public class WorldGenMinableTFCNew extends WorldGenerator
                         if (r == 1) setBlock(world, x, y + array.length / 2 - l, z, rar);
                         else if (rand.nextInt(r) == 1) setBlock(world, x, y + array.length / 2 - l, z, rar);
                 }
-        	}
         }
                 
         
@@ -261,7 +250,6 @@ public class WorldGenMinableTFCNew extends WorldGenerator
         }   
 
 		public boolean bODgenerateArea(World world, Random rand, int par3, int par4, int par5, final int amd) {
-			if (!TerraFirmaCraft.CLIENT) {
 			int amdDiv2real = toReal(amd) / 2;
 			Vec3 start = Vec3.createVectorHelper(par3, par4, par5);
 			for (int i = 0; i < this.AreaNumber; i++) {
@@ -280,11 +268,9 @@ public class WorldGenMinableTFCNew extends WorldGenerator
 				bODgenerateLens(world, rand, (int) to.xCoord, (int) to.yCoord, (int) to.zCoord, rx, ry, rz);
 			}
 			return true;
-			} return true;
 		}
         
 		public boolean bODgenerateLens(World world, Random rand, int par3, int par4, int par5, int dx, int dy, int dz) {
-			if (!TerraFirmaCraft.CLIENT) {	
 
 			int xpos = par3;
 			int ypos = par4;
@@ -341,12 +327,9 @@ public class WorldGenMinableTFCNew extends WorldGenerator
 			}
 
 			return true;
-			}
-			return true;
 		}
 
 		private void createEllipse(World world, int xpos, int ypos, int zpos, int x, int y, int z, int r, int g) {
-			if (!TerraFirmaCraft.CLIENT) {
 			if (rand.nextInt(r) == 1) setBlock(world, xpos + x, ypos + y, zpos + z, g);
 			if (rand.nextInt(r) == 1) setBlock(world, xpos - x, ypos + y, zpos + z, g);
 			if (rand.nextInt(r) == 1) setBlock(world, xpos + x, ypos - y, zpos + z, g);
@@ -355,7 +338,6 @@ public class WorldGenMinableTFCNew extends WorldGenerator
 			if (rand.nextInt(r) == 1) setBlock(world, xpos + x, ypos - y, zpos - z, g);
 			if (rand.nextInt(r) == 1) setBlock(world, xpos - x, ypos + y, zpos - z, g);
 			if (rand.nextInt(r) == 1) setBlock(world, xpos - x, ypos - y, zpos - z, g);
-			}
 		}
 
 		private boolean canPlace(Block b) {
@@ -363,7 +345,6 @@ public class WorldGenMinableTFCNew extends WorldGenerator
 		}
 
 		private void setBlock(World world, int posX, int posY, int posZ, int g) {
-			if (!TerraFirmaCraft.CLIENT) {
 			int m = world.getBlockMetadata(posX, posY, posZ);
 			Block b = world.getBlock(posX, posY, posZ);
 
@@ -377,7 +358,6 @@ public class WorldGenMinableTFCNew extends WorldGenerator
 						numberOfBlocks++;
 					}
 				}
-			}
 		}
 
 		@Override

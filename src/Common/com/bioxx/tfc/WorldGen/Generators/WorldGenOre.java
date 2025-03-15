@@ -1,11 +1,9 @@
 package com.bioxx.tfc.WorldGen.Generators;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import com.bioxx.tfc.TerraFirmaCraft;
 import com.bioxx.tfc.Core.TFC_Climate;
 import com.bioxx.tfc.Core.Util.CaseInsensitiveHashMap;
 import com.bioxx.tfc.WorldGen.DataLayer;
@@ -26,14 +24,12 @@ public class WorldGenOre implements IWorldGenerator
 
 	public static Map<String, OreSpawnData> oreList = new CaseInsensitiveHashMap<OreSpawnData>();
 
-	public WorldGenOre()
-	{
-	}
+    public WorldGenOre() {
+    }
 
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
-		if (!TerraFirmaCraft.CLIENT) {
 		chunkX *= 16;
 		chunkZ *= 16;
 		this.chunkX = chunkX;
@@ -48,23 +44,19 @@ public class WorldGenOre implements IWorldGenerator
             ore(osd.type, osd.block, osd.meta, osd.base, osd.rarity, osd.min, osd.max, osd.rnd, osd.SphereXSize, osd.SphereYSize, osd.SphereZSize, osd.VeinWidth,
             		osd.VeinBaseHeight, osd.VeinDownFactor, osd.AreaNumber, osd.AreaMaxDistance, osd.CellSize, name);
         }
-		}
 	}
 
 	private void ore(EnumOreGen type, Block block, int meta, Map<Block, List<Integer>> baseRocks, int rarity, int min, int max, int rnd, int SphereXSize,
 			int SphereYSize, int SphereZSize, int VeinWidth, int VeinBaseHeight, int VeinDownFactor, int AreaNumber, int AreaMaxDistance, int CellSize, String name)
 	{
-		if (!TerraFirmaCraft.CLIENT) {
 		createOre(type, block, meta ,baseRocks, rarity, rnd, worldObj, random, chunkX, chunkZ, min, max, SphereXSize, SphereYSize, SphereZSize, VeinWidth,
 				VeinBaseHeight, VeinDownFactor, AreaNumber, AreaMaxDistance, CellSize, name );
-		}
 	}
 
     private static void createOre(EnumOreGen type, Block block, int j, Map<Block, List<Integer>> layers, int rarity, int rnd, World world, Random rand, int chunkX,
             int chunkZ, int min, int max, int SphereXSize, int SphereYSize, int SphereZSize, int VeinWidth, int VeinBaseHeight, int VeinDownFactor, int AreaNumber,
             int AreaMaxDistance, int CellSize, String name)
 	{
-    	if (!TerraFirmaCraft.CLIENT) {
 		if(world.getWorldChunkManager() instanceof TFCWorldChunkManager)
 		{
 			for(Block b : layers.keySet())
@@ -86,6 +78,5 @@ public class WorldGenOre implements IWorldGenerator
 				}
 			}
 		}
-    	}
 	}
 }
