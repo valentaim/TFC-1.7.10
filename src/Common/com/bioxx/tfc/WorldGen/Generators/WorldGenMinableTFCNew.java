@@ -23,7 +23,6 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenMinableTFCNew extends WorldGenerator
 {
-        //==========================================mp mod
         private static final Logger logger = FMLLog.getLogger();
         private static List<List<Object>> oreList = new ArrayList<List<Object>>();
         public static int mPChunkX;
@@ -60,7 +59,6 @@ public class WorldGenMinableTFCNew extends WorldGenerator
         private final String oreName;
 
 
-        //==========================================mp mod
         private final Block minableBlock;
         private int numberOfBlocks;
 
@@ -176,7 +174,6 @@ public class WorldGenMinableTFCNew extends WorldGenerator
 
         public boolean bODgenerateVein(World world, Random rand, int parX, int parY, int parZ, int xyz)
         {
-                //==========================================mp mod
                 int posX = parX;
                 int posY = parY + xyz/2;
                 int posZ = parZ;
@@ -224,15 +221,11 @@ public class WorldGenMinableTFCNew extends WorldGenerator
                         
                         if (directionxz)
                         {
-                                /////////// x
                                 if (smes) x++;
-                                
                         }
                         else
                         {
-                                /////////// z
                                 if (smes) z++;
-                                
                         }
                         
                         int rar = 1;
@@ -243,7 +236,6 @@ public class WorldGenMinableTFCNew extends WorldGenerator
                         else if (rand.nextInt(r) == 1) setBlock(world, x, y + array.length / 2 - l, z, rar);
                 }
         }
-                
         
         private static double lengthSq(double x, double y, double z) {
         	return (x * x) + (y * y) + (z * z);
@@ -323,9 +315,7 @@ public class WorldGenMinableTFCNew extends WorldGenerator
 						else createEllipse(world, xpos, ypos, zpos, x, y, z, 25, 2);
 					}
 				}
-
 			}
-
 			return true;
 		}
 
@@ -348,21 +338,21 @@ public class WorldGenMinableTFCNew extends WorldGenerator
 			int m = world.getBlockMetadata(posX, posY, posZ);
 			Block b = world.getBlock(posX, posY, posZ);
 
-			if ((canPlace(b)) && (posY >= oreMin) && (posY <= oreMax))
-				if (mPBlock != null && world.setBlock(posX, posY, posZ, mPBlock, minableBlockMeta, 2)) {
-					TEOre te = (TEOre) world.getTileEntity(posX, posY, posZ);
-					if (te != null) {
-						te.baseBlockID = Block.getIdFromBlock(b);
-						te.baseBlockMeta = m;
-						te.extraData = (byte) (g);
-						numberOfBlocks++;
-					}
-				}
+			if ((canPlace(b)) && (posY >= oreMin) && (posY <= oreMax)) {
+                if (mPBlock != null && world.setBlock(posX, posY, posZ, mPBlock, minableBlockMeta, 2)) {
+                    TEOre te = (TEOre) world.getTileEntity(posX, posY, posZ);
+                    if (te != null) {
+                        te.baseBlockID = Block.getIdFromBlock(b);
+                        te.baseBlockMeta = m;
+                        te.extraData = (byte) (g);
+                        numberOfBlocks++;
+                    }
+                }
+            }
 		}
 
 		@Override
 		public boolean generate(World world, Random random, int i, int j, int k) {
 			return false;
 		}
-
 	}

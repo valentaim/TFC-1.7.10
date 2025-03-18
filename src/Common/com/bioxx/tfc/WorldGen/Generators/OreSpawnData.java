@@ -21,7 +21,6 @@ public class OreSpawnData
 
 	public OreSpawnData(String t, String s, String blockName, int m, int r, String[] baseRocks)
 	{
-//		if (!TerraFirmaCraft.CLIENT) {
 		block = Block.getBlockFromName(blockName);
 
 		if (block == null)
@@ -48,14 +47,12 @@ public class OreSpawnData
 		{
 			getOre(name);
 		}
-//		}
 	}
 
     public OreSpawnData(String t, String s, String blockName, int m, int r, String[] baseRocks, int minHeight, int maxHeight, int rnd, int sxs,
             int sys, int szs, int vw, int vbh, int vdf, int an, int amd, int cs)
 	{
 		this(t, s, blockName, m, r, baseRocks);
-//		if (!TerraFirmaCraft.CLIENT) {
 		min = minHeight;
 		max = maxHeight;
 		this.rnd = rnd;
@@ -68,7 +65,6 @@ public class OreSpawnData
         AreaNumber = an;
         AreaMaxDistance = amd;
         CellSize = cs;
-//		}
 	}
 
 	private void getOre(String name)
