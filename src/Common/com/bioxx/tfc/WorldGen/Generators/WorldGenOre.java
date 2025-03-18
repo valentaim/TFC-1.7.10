@@ -8,7 +8,7 @@ import com.bioxx.tfc.Core.TFC_Climate;
 import com.bioxx.tfc.Core.Util.CaseInsensitiveHashMap;
 import com.bioxx.tfc.WorldGen.DataLayer;
 import com.bioxx.tfc.WorldGen.TFCWorldChunkManager;
-import com.bioxx.tfc.WorldGen.Generators.OreSpawnData.EnumOreGen;
+import com.bioxx.tfc.api.Enums.EnumOreGen;
 
 import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.block.Block;

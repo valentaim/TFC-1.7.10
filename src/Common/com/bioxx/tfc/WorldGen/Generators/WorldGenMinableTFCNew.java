@@ -12,7 +12,7 @@ import com.bioxx.tfc.Blocks.Terrain.BlockIgIn;
 import com.bioxx.tfc.Blocks.Terrain.BlockMM;
 import com.bioxx.tfc.Blocks.Terrain.BlockSed;
 import com.bioxx.tfc.TileEntities.TEOre;
-import com.bioxx.tfc.WorldGen.Generators.OreSpawnData.EnumOreGen;
+import com.bioxx.tfc.api.Enums.EnumOreGen;
 import com.bioxx.tfc.api.TFCOptions;
 
 import cpw.mods.fml.common.FMLLog;
