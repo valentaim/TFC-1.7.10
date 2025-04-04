@@ -70,7 +70,7 @@ public class WorldGenOre implements IWorldGenerator
 						rockLayer2.block == b && (rockLayer2.data2 == metadata || metadata == -1) ||
 						rockLayer3.block == b && (rockLayer3.data2 == metadata || metadata == -1))
 					{
-                        new WorldGenMinableTFCNew(type, block, j, b, metadata, rarity, rnd,
+                        new WorldGenMinableTFC(type, block, j, b, metadata, rarity, rnd,
                                 SphereXSize,  SphereYSize, SphereZSize, VeinWidth, VeinBaseHeight, VeinDownFactor, AreaNumber, AreaMaxDistance, CellSize, name)
                                 .generate(world, rand, chunkX, chunkZ, min, max);
 
