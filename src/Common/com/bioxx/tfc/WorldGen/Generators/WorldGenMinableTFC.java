@@ -61,6 +61,7 @@ public class WorldGenMinableTFC extends WorldGenerator
 
         private final Block minableBlock;
         private int numberOfBlocks;
+        private int numberOfPices;
 
         public WorldGenMinableTFC(EnumOreGen type, Block block, int j, Block layerBlock, int layerMeta, int rarity,
                                   int rnd, int SphereXSize, int SphereYSize, int SphereZSize, int VeinWidth, int VeinBaseHeight, int VeinDownFactor, int an, int amd, int cs, String name)
@@ -140,7 +141,7 @@ public class WorldGenMinableTFC extends WorldGenerator
 			logger.warn("Configuration error ! ");
 		}
 
-		if (TFCOptions.enableDebugMode) logger.warn("Generated " + this.numberOfBlocks + " blocks");
+		if (TFCOptions.enableDebugMode) logger.warn("Generated " + this.numberOfBlocks + " blocks and " + numberOfPices/100 + " slitkov");
 	}
 
         public boolean generate(World world, Random random, int x, int z, int min, int max)//obsorb default system
@@ -346,6 +347,15 @@ public class WorldGenMinableTFC extends WorldGenerator
                         te.baseBlockMeta = m;
                         te.extraData = (byte) (g);
                         numberOfBlocks++;
+                        if (g == 1) {
+                            numberOfPices = numberOfPices + 35;
+                        }
+                        if (g == 2) {
+                            numberOfPices = numberOfPices + 15;
+                        }
+                        if (g == 0) {
+                            numberOfPices = numberOfPices + 25;
+                        }
                     }
                 }
             }
