@@ -141,7 +141,7 @@ public class WorldGenMinableTFC extends WorldGenerator
 			logger.warn("Configuration error ! ");
 		}
 
-		if (TFCOptions.enableDebugMode) logger.warn("Generated " + this.numberOfBlocks + " blocks and " + numberOfPices/100 + " slitkov");
+		if (TFCOptions.enableDebugMode) logger.warn("Generated " + this.numberOfBlocks + " blocks and " + numberOfPices/100 + " ingots.");
 	}
 
         public boolean generate(World world, Random random, int x, int z, int min, int max)//obsorb default system
