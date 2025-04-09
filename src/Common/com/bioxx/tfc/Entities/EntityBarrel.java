@@ -71,6 +71,7 @@ public class EntityBarrel extends Entity
 	public void explode()
 	{
 		float f = gunpowder / 12.0F; // Full barrel = the old large strength of 64
+		f /= 2.2F; //Test(c)
 		this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, f, true);
 	}
 
