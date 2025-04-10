@@ -70,29 +70,29 @@ public class WorldGenPlants implements IWorldGenerator
 		if(rain >= 125)
 		{
 			grassPerChunk+=12;
-			mushroomsPerChunk += 1;
+			mushroomsPerChunk++;
 		}
 		if(rain >= 250)
 		{
 			grassPerChunk+=18;
 			flowerChunkRarity -= 2;
-			mushroomsPerChunk += 1;
+			mushroomsPerChunk++;
 		}
 		if(rain >= 500)
 		{
 			grassPerChunk+=24;
 			flowerChunkRarity -= 3;
-			mushroomsPerChunk += 1;
+			mushroomsPerChunk++;
 		}
 		if(rain >= 1000)
 		{
 			flowerChunkRarity -= 5;
-			mushroomsPerChunk += 1;
+			mushroomsPerChunk++;
 		}
 		if(rain >= 2000)
 		{
 			flowerChunkRarity -= 5;
-			mushroomsPerChunk += 1;
+			mushroomsPerChunk++;
 		}
 		bioTemperature = TFC_Climate.getBioTemperatureHeight(world, chunkX, Global.SEALEVEL, chunkZ);
 		if(bioTemperature < 10)

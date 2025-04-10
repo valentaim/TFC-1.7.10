@@ -1,5 +1,5 @@
-//world gen minable
-package com.bioxx.tfc.WorldGen.Generators;
+package com.bioxx.tfc.WorldGen.Generators;//CHECK
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,9 +41,8 @@ public class WorldGenMinableTFC extends WorldGenerator
 
         private Random rand;
         private static World worldObj;
-        
-        private int oreMin, oreMax; 
-
+        private int oreMin;
+        private int oreMax;
         private final int rarity;       
         private final EnumOreGen type;
         private final int SphereXSize;
@@ -71,15 +70,15 @@ public class WorldGenMinableTFC extends WorldGenerator
                 this.rarity = rarity;                               
                 this.rnd = rnd;
                 this.type = type;
-                this.SphereXSize = SphereXSize; //35 
-                this.SphereYSize = SphereYSize;  //5
-                this.SphereZSize = SphereZSize;  // 25
+                this.SphereXSize = SphereXSize;
+                this.SphereYSize = SphereYSize;
+                this.SphereZSize = SphereZSize;
                 this.VeinWidth = VeinWidth;
                 this.VeinBaseHeight = VeinBaseHeight;
                 this.VeinDownFactor = VeinDownFactor;
-                this.AreaNumber = an;//10;
-                this.AreaMaxDistance = amd;//50;
-                this.CellSize = cs;//10;
+                this.AreaNumber = an;
+                this.AreaMaxDistance = amd;
+                this.CellSize = cs;
                 this.oreName = name;        	
         }
 
@@ -304,7 +303,7 @@ public class WorldGenMinableTFC extends WorldGenerator
 								if (y == 0) break forX;								
 								break forY;
 							}
-							break forZ;
+							break;
 						}
 
 						double px = lengthSq(nextXn, yn, zn);

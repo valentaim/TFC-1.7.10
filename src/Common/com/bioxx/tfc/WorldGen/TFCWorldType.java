@@ -1,4 +1,4 @@
-package com.bioxx.tfc.WorldGen;
+package com.bioxx.tfc.WorldGen;//CHECK
 
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;

@@ -25,7 +25,7 @@ public class WorldGenJungleShrub extends WorldGenerator
 		do
 		{
 			block = world.getBlock(x, y, z);
-			if (!(block.isLeaves(world, x, y, z) || block.isAir(world, x, y, z)))
+			if ((!block.isLeaves(world, x, y, z) && !block.isAir(world, x, y, z)))//TEst (c)
 			{
 				break;
 			}

@@ -34,7 +34,7 @@ public class WorldGenForests implements IWorldGenerator
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,
-			IChunkProvider chunkGenerator, IChunkProvider chunkProvider) 
+			IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
 		chunkX *= 16;
 		chunkZ *= 16;
@@ -42,9 +42,9 @@ public class WorldGenForests implements IWorldGenerator
 		if (world.getBiomeGenForCoords(chunkX, chunkZ) instanceof TFCBiome) // Fixes ClassCastException
 		{
 			TFCBiome biome = (TFCBiome) world.getBiomeGenForCoords(chunkX, chunkZ);
-			if (biome == TFCBiome.OCEAN || biome == TFCBiome.DEEP_OCEAN)
+			if (biome == TFCBiome.OCEAN || biome == TFCBiome.DEEP_OCEAN) {
 				return;
-
+}
 			rainfall = TFC_Climate.getRainfall(world, chunkX, 0, chunkZ);
 			evt = TFC_Climate.getCacheManager(world).getEVTLayerAt(chunkX + 8, chunkZ + 8).floatdata1;
 			treeType0 = TFC_Climate.getTreeLayer(world, chunkX, Global.SEALEVEL, chunkZ, 0);
@@ -183,27 +183,38 @@ public class WorldGenForests implements IWorldGenerator
 			//float temperature = TFC_Climate.getBioTemperatureHeight(world, xCoord, world.getHeightValue(xCoord, zCoord), zCoord);
 			float temperatureAvg = TFC_Climate.getBioTemperature(world, xCoord, zCoord);
 
-			try
-			{
-				if(evt <= EnumTree.KAPOK.maxEVT &&
+			try {
+				if (evt >= EnumTree.KAPOK.minEVT &&
+						evt <= EnumTree.KAPOK.maxEVT &&
 						rainfall >= EnumTree.KAPOK.minRain &&
-						rainfall <= EnumTree.KAPOK.maxRain && 
+						rainfall <= EnumTree.KAPOK.maxRain &&
 						temperatureAvg >= EnumTree.KAPOK.minTemp &&
-						temperatureAvg <= EnumTree.KAPOK.maxTemp)
-				{
+						temperatureAvg <= EnumTree.KAPOK.maxTemp) {
 					WorldGenerator gen0;
-					if(random.nextInt(5) == 0)
-						gen0 = new WorldGenKapokTrees(false,15);
-					else if(random.nextInt(2) == 0)
+					if (random.nextInt(10) == 0)
+						gen0 = TFCBiome.getTreeGen(15, false);
+					else if (random.nextInt(2) == 0)
 						gen0 = new WorldGenCustomShortTrees(false, 15);
-					else 
+					else
 						gen0 = new WorldGenJungleShrub(15);
 
 					//gen0 = random.nextInt(2) == 0 ? new WorldGenJungleShrub(15) : random.nextInt(3) == 0 ? new WorldGenKapokTrees(false,15):  new WorldGenCustomShortTrees(false, 15);
-					gen0.setScale(1.0D, 1.0D, 1.0D);
-					gen0.generate(world, random, xCoord, yCoord, zCoord);
-					completed = true;
+					if (random.nextBoolean()) {
+						gen0.setScale(1.0D, 1.0D, 1.0D);
+						gen0.generate(world, random, xCoord, yCoord, zCoord);
+						completed = true;
+					}
 				}
+
+				if (this.evt >= EnumTree.KOA.minEVT && this.evt <= EnumTree.KOA.maxEVT && this.rainfall >= EnumTree.KOA.minRain && this.rainfall <= EnumTree.KOA.maxRain && temperatureAvg >= EnumTree.KOA.minTemp && temperatureAvg <= EnumTree.KOA.maxTemp) {
+
+
+					if (random.nextBoolean()) {
+						WorldGenerator gen0 = new WorldGenAcaciaKoaTrees(false, 0);
+
+						gen0.setScale(1.0D, 1.0D, 1.0D);
+						gen0.generate(world, random, xCoord, yCoord, zCoord);
+					}
 
 //				if(evt <= EnumTree.KOA.maxEVT &&
 //						rainfall >= EnumTree.KOA.minRain &&
@@ -216,6 +227,7 @@ public class WorldGenForests implements IWorldGenerator
 //					gen0.setScale(1.0D, 1.0D, 1.0D);
 //					gen0.generate(world, random, xCoord, yCoord, zCoord);
 //				}
+				}
 			}
 			catch(IndexOutOfBoundsException e)
 			{

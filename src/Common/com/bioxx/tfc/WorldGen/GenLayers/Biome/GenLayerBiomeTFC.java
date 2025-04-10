@@ -1,4 +1,4 @@
-package com.bioxx.tfc.WorldGen.GenLayers.Biome;
+package com.bioxx.tfc.WorldGen.GenLayers.Biome;//CHECK
 
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
@@ -18,7 +18,7 @@ public class GenLayerBiomeTFC extends GenLayerTFC
 			TFCBiome.HIGH_PLAINS,
 			TFCBiome.SWAMPLAND,
 			TFCBiome.ROLLING_HILLS,
-			TFCBiome.MOUNTAINS,
+			TFCBiome.MOUNTAINS
 	};
 
 	public GenLayerBiomeTFC(long par1, GenLayer par3GenLayer, TFCWorldType par4)

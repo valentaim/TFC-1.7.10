@@ -1,4 +1,4 @@
-package com.bioxx.tfc.WorldGen.GenLayers.DataLayers.Drainage;
+package com.bioxx.tfc.WorldGen.GenLayers.DataLayers.Drainage;//CHECK
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -73,10 +73,10 @@ public abstract class GenDrainageLayer extends GenLayerTFC
 	}
 
 	private static boolean shouldDraw;
-	public static void drawImage(int size, GenLayerTFC genlayer, String name)
-	{
-		if(!shouldDraw)
+	public static void drawImage(int size, GenLayerTFC genlayer, String name) {
+		if (!shouldDraw) {
 			return;
+	}
 		try 
 		{
 			File outFile = new File(name+".bmp");

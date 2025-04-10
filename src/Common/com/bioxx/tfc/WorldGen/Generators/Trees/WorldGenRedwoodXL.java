@@ -1,7 +1,7 @@
 /**
  * Copyright (c) Scott Killen and MisterFiber, 2012
  */
-package com.bioxx.tfc.WorldGen.Generators.Trees;
+package com.bioxx.tfc.WorldGen.Generators.Trees;//CHECK
 
 import java.util.Random;
 

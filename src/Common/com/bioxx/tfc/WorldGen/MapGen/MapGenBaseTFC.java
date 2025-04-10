@@ -1,3 +1,4 @@
+//CHECK
 package com.bioxx.tfc.WorldGen.MapGen;
 
 import java.util.Random;
