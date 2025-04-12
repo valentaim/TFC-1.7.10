@@ -209,12 +209,12 @@ public class WorldGenForests implements IWorldGenerator
 				if (this.evt >= EnumTree.KOA.minEVT && this.evt <= EnumTree.KOA.maxEVT && this.rainfall >= EnumTree.KOA.minRain && this.rainfall <= EnumTree.KOA.maxRain && temperatureAvg >= EnumTree.KOA.minTemp && temperatureAvg <= EnumTree.KOA.maxTemp) {
 
 
-					if (random.nextBoolean()) {
-						WorldGenerator gen0 = new WorldGenAcaciaKoaTrees(false, 0);
-
-						gen0.setScale(1.0D, 1.0D, 1.0D);
-						gen0.generate(world, random, xCoord, yCoord, zCoord);
-					}
+//					if (random.nextBoolean()) {
+//						WorldGenerator gen0 = new WorldGenAcaciaKoaTrees(false, 0);
+//
+//						gen0.setScale(1.0D, 1.0D, 1.0D);
+//						gen0.generate(world, random, xCoord, yCoord, zCoord);
+//					}
 
 //				if(evt <= EnumTree.KOA.maxEVT &&
 //						rainfall >= EnumTree.KOA.minRain &&
