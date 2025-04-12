@@ -216,7 +216,7 @@ public class BlockGrass extends BlockTerra
 				float rain = TFC_Climate.getRainfall(world, i, j + 1, k);
 				float temp = TFC_Climate.getHeightAdjustedTemp(world, i, j+1, k);
 
-				if (TFC_Core.isGrass(this) && !TFC_Core.isDryGrass(this) && world.getBlock(i, j + 1, k).getMaterial() != Material.water && world.isAirBlock(i, j + 1, k))
+				if (temp > 20f && TFC_Core.isGrass(this) && !TFC_Core.isDryGrass(this) && world.getBlock(i, j + 1, k).getMaterial() != Material.water && world.isAirBlock(i, j + 1, k))
 				{
 					if(rand.nextInt((int) ((16800-rain)/4)) == 0 && temp > 20)
 						world.setBlock(i, j + 1, k, TFCBlocks.tallGrass, (world.rand.nextInt(30) == 0 ? 1 : 0), 0x2); // 1/30 chance to spawn fern

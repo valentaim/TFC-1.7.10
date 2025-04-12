@@ -148,4 +148,8 @@ public class WorldGenLooseRocks implements IWorldGenerator
 				world.getBlock(i, j + 6, k - 5).getMaterial() == Material.leaves;
 	}
 
+	//Add from tfcsuv2
+  public static boolean rocksNearby(World world, int i, int j, int k) {
+    return (world.getBlock(i + 1, j + 1, k) != TFCBlocks.worldItem || world.getBlock(i + 1, j + 1, k + 1) != TFCBlocks.worldItem || world.getBlock(i, j + 1, k + 1) != TFCBlocks.worldItem || world.getBlock(i - 1, j + 1, k) != TFCBlocks.worldItem || world.getBlock(i - 1, j + 1, k + 1) != TFCBlocks.worldItem || world.getBlock(i - 1, j + 1, k - 1) != TFCBlocks.worldItem || world.getBlock(i, j + 1, k - 1) != TFCBlocks.worldItem || world.getBlock(i + 1, j + 1, k) != TFCBlocks.worldItem);
+  }
 }
