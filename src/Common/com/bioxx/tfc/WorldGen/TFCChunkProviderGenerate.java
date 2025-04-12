@@ -42,10 +42,10 @@ public class TFCChunkProviderGenerate extends ChunkProviderGenerate
 	private NoiseGeneratorOctaves noiseGen1;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
-	private NoiseGeneratorOctaves noiseGen2;
+//	private NoiseGeneratorOctaves noiseGen2;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
-	private NoiseGeneratorOctaves noiseGen3;
+//	private NoiseGeneratorOctaves noiseGen3;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
 	private NoiseGeneratorOctaves noiseGen4;
@@ -78,13 +78,13 @@ public class TFCChunkProviderGenerate extends ChunkProviderGenerate
 	private byte[] metaBig;
 
 	/** A double array that hold terrain noise from noiseGen3 */
-	private double[] noise3;
+//	private double[] noise3;
 
 	/** A double array that hold terrain noise */
 	private double[] noise1;
 
 	/** A double array that hold terrain noise from noiseGen2 */
-	private double[] noise2;
+//	private double[] noise2;
 
 	/** A double array that hold terrain noise from noiseGen5 */
 	//private double[] noise5;
@@ -111,9 +111,9 @@ public class TFCChunkProviderGenerate extends ChunkProviderGenerate
 
 		this.worldObj = par1World;
 		this.rand = new Random(par2);
-		this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 4);
-		this.noiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
-		this.noiseGen3 = new NoiseGeneratorOctaves(this.rand, 8);
+		this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
+//		this.noiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
+//		this.noiseGen3 = new NoiseGeneratorOctaves(this.rand, 8);
 		this.noiseGen4 = new NoiseGeneratorOctaves(this.rand, 4);
 		this.noiseGen5 = new NoiseGeneratorOctaves(this.rand, 2);
 		this.noiseGen6 = new NoiseGeneratorOctaves(this.rand, 1);
@@ -264,10 +264,12 @@ public class TFCChunkProviderGenerate extends ChunkProviderGenerate
 		{
 			if(temp<25 && temp > -10)
 			{
+//				spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntitySheepSuffolk.class, 2, 2, 4));
 				spawnableCreatureList.add(new SpawnListEntry(EntitySheepTFC.class, 2, 2, 4));
 				if(rain >250 && evt < 0.75)
 				{
 					spawnableCreatureList.add(new SpawnListEntry(EntityWolfTFC.class, 2, 1, 3));
+//					spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityBear3D.class, 1, 1, 1));
 					spawnableCreatureList.add(new SpawnListEntry(EntityBear.class, 1, 1, 1));
 				}
 			}
@@ -278,19 +280,23 @@ public class TFCChunkProviderGenerate extends ChunkProviderGenerate
 				if(temp > 20)
 				{
 					//Pigs spawn on the warmer end of the spectrum
+//					spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityBoar.class, 1, 1, 2));
 					spawnableCreatureList.add(new SpawnListEntry(EntityPigTFC.class, 1, 1, 2));
 				}
 				if(temp < 30)
 				{
 					spawnableCreatureList.add(new SpawnListEntry(EntityCowTFC.class, 2, 2, 4));
+//					spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityEnhancedCow.class, 2, 2, 4));
 					spawnableCreatureList.add(new SpawnListEntry(EntityHorseTFC.class, 2, 2, 3));
 				}
 			}
 		//regular temperate forest
 		if(temp > 0 &&temp < 21 && rain > 250)
 		{
+//			spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityBoar.class, 2 + mountainousAreaModifier, 2 + mountainousAreaModifier, 3 + mountainousAreaModifier));
 			spawnableCreatureList.add(new SpawnListEntry(EntityPigTFC.class, 2 + mountainousAreaModifier, 2 + mountainousAreaModifier, 3 + mountainousAreaModifier));
 			spawnableCreatureList.add(new SpawnListEntry(EntityWolfTFC.class, 1, 1, 2 + mountainousAreaModifier));
+//			spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityBear3D.class, 1, 1, 1));
 			spawnableCreatureList.add(new SpawnListEntry(EntityBear.class, 1, 1, 1));
 			spawnableCreatureList.add(new SpawnListEntry(EntityDeer.class, 2 + mountainousAreaModifier, 1, 3 + mountainousAreaModifier));
 			spawnableCreatureList.add(new SpawnListEntry(EntityPheasantTFC.class, 3 + mountainousAreaModifier, 1, 3));
@@ -302,11 +308,14 @@ public class TFCChunkProviderGenerate extends ChunkProviderGenerate
 			//boreal forest
 			if(rain > 250)
 			{
+//				spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityBoar.class, 1 + mountainousAreaModifier, 1, 2));
 				spawnableCreatureList.add(new SpawnListEntry(EntityPigTFC.class, 1 + mountainousAreaModifier, 1, 2));
 				spawnableCreatureList.add(new SpawnListEntry(EntityWolfTFC.class, 2 + mountainousAreaModifier, 1, 2 + mountainousAreaModifier));
+//				spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityBear3D.class, 2 + mountainousAreaModifier, 1, 1));
 				spawnableCreatureList.add(new SpawnListEntry(EntityBear.class, 2 + mountainousAreaModifier, 1, 1));
 				spawnableCreatureList.add(new SpawnListEntry(EntityDeer.class, 1 + mountainousAreaModifier, 2, 3));
 				spawnableCreatureList.add(new SpawnListEntry(EntityPheasantTFC.class, 1 + mountainousAreaModifier, 1, 2));
+//				spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntitySheepMerino.class, 2, 2, 4));
 				spawnableCreatureList.add(new SpawnListEntry(EntitySheepTFC.class, 2, 2, 4));
 			}
 			//closer to tundra or taiga
@@ -319,12 +328,14 @@ public class TFCChunkProviderGenerate extends ChunkProviderGenerate
 		//Jungle
 		if(temp >= 23 && temp < 44 && rain > 1500)
 		{
+//			spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityBoar.class, 2 + mountainousAreaModifier, 2 + mountainousAreaModifier, 4 + mountainousAreaModifier));
 			spawnableCreatureList.add(new SpawnListEntry(EntityPigTFC.class, 2 + mountainousAreaModifier, 2 + mountainousAreaModifier, 4 + mountainousAreaModifier));
 			spawnableCreatureList.add(new SpawnListEntry(EntityChickenTFC.class, 3 + mountainousAreaModifier, 1, 4 + mountainousAreaModifier));
 		}
 		//Swamp
 		if(TFC_Climate.isSwamp(world, x,150,z))
 		{
+//			spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityBoar.class, 2 + mountainousAreaModifier, 2 + mountainousAreaModifier, 4 + mountainousAreaModifier));
 			spawnableCreatureList.add(new SpawnListEntry(EntityPigTFC.class, 1, 1, 2));
 			spawnableCreatureList.add(new SpawnListEntry(EntityPheasantTFC.class, 1 + mountainousAreaModifier, 1, 1));
 		}
@@ -448,16 +459,16 @@ public class TFCChunkProviderGenerate extends ChunkProviderGenerate
 		 *               double var45 = 684.412D;
 		 */
 
-		double double1 = 1000D;
-		double double2 = 1000D;
+		double double1 = 850D;
+		double double2 = 850D;
 		// double1 and double 2 are only used in these generateNoiseOctaves methods.
 
 		//this.noise5 = this.noiseGen5.generateNoiseOctaves(this.noise5, xPos, zPos, xSize, zSize, 1.121D, 1.121D, 0.5D);
 		this.noise6 = this.noiseGen6.generateNoiseOctaves(this.noise6, xPos, zPos, xSize, zSize, 200.0D, 200.0D, 0.5D);
-		this.noise3 = this.noiseGen3.generateNoiseOctaves(this.noise3, xPos, yPos, zPos, xSize, ySize, zSize, double1 / 80.0D, double2 / 160.0D, double1 / 80.0D);
+//		this.noise3 = this.noiseGen3.generateNoiseOctaves(this.noise3, xPos, yPos, zPos, xSize, ySize, zSize, double1 / 80.0D, double2 / 160.0D, double1 / 80.0D);
 		//this.noise3 = this.noiseGen3.generateNoiseOctaves(this.noise3, xPos, yPos, zPos, xSize, ySize, zSize, var44 / 80.0D, 0.5, var44 / 80.0D);
 		this.noise1 = this.noiseGen1.generateNoiseOctaves(this.noise1, xPos, yPos, zPos, xSize, ySize, zSize, double1, double2, double1);
-		this.noise2 = this.noiseGen2.generateNoiseOctaves(this.noise2, xPos, yPos, zPos, xSize, ySize, zSize, double1, double2, double1);
+//		this.noise2 = this.noiseGen2.generateNoiseOctaves(this.noise2, xPos, yPos, zPos, xSize, ySize, zSize, double1, double2, double1);
 
 		int index1 = 0;
 		int index2 = 0;
@@ -528,15 +539,15 @@ public class TFCChunkProviderGenerate extends ChunkProviderGenerate
 							var32 *= 4.0D;
 
 						double var34 = this.noise1[index1] / 512.0D;
-						double var36 = this.noise2[index1] / 512.0D;
-						double var38 = (this.noise3[index1] / 10.0D + 1.0D) / 2.0D;
+//						double var36 = this.noise2[index1] / 512.0D;
+//						double var38 = (this.noise3[index1] / 10.0D + 1.0D) / 2.0D;
 
-						if (var38 < 0.0D)
+//						if (var38 < 0.0D)
 							output = var34;
-						else if (var38 > 1.0D)
-							output = var36;
-						else
-							output = var34 + (var36 - var34) * var38;
+//						else if (var38 > 1.0D)
+//							output = var36;
+//						else
+//							output = var34 + (var36 - var34) * var38;
 
 						output -= var32;
 						if (y > ySize - 4)
@@ -567,7 +578,7 @@ public class TFCChunkProviderGenerate extends ChunkProviderGenerate
 			{
 				int arrayIndex = xCoord + zCoord * 16;
 				int arrayIndexDL = zCoord + xCoord * 16;
-				int arrayIndex2 = xCoord+1 + zCoord+1 * 16;
+				int arrayIndex2 = xCoord+1 + zCoord+ 16;
 				TFCBiome biome = (TFCBiome)getBiome(xCoord,zCoord);
 				DataLayer rock1 = rockLayer1[arrayIndexDL] == null ? DataLayer.GRANITE : rockLayer1[arrayIndexDL];
 				DataLayer rock2 = rockLayer2[arrayIndexDL] == null ? DataLayer.GRANITE : rockLayer2[arrayIndexDL];
