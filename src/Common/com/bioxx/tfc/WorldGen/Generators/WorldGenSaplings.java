@@ -12,6 +12,9 @@ import com.bioxx.tfc.api.Enums.EnumTree;
 public class WorldGenSaplings
 {
 	public void generate(World world, Random random, int xCoord, int yCoord, int zCoord)
+
+//    if (tfcsu.instance.getPluginAccess().isTownBlock(xCoord, zCoord))
+//		return;
 	{
 		boolean hasSpaceToGrow = true;
 
