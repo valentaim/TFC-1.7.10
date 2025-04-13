@@ -34,7 +34,7 @@ public class WorldGenBulbTree
   public boolean generate(World world, Random random, int x, int y, int z) {
     int l = random.nextInt(this.randomTreeHeight) + this.minTreeHeight;
     if (!TFC_Core.isSoil(world.getBlock(x, y - 1, z)) || y >= world.getHeight() - l - 1) return false;
-//    if (world.getBlock(x, y, z) != Blocks.air) return false;
+    if (world.getBlock(x, y, z) != Blocks.air) return false;
 
     if (y < 256 - l - 1) {
       byte b0 = 3;
