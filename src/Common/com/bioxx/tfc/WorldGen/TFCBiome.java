@@ -3,8 +3,6 @@ package com.bioxx.tfc.WorldGen;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.bioxx.tfc.WorldGen.Generators.Trees.New.WorldGenBulbTree;
-import com.bioxx.tfc.api.TFCBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -43,8 +41,8 @@ public class TFCBiome extends BiomeGenBase
 
 	protected static WorldGenAcaciaKoaTrees worldGenAcaciaKoaTrees;
 	protected static WorldGenCustomTallTrees worldGenAshTallTrees;
-	protected static WorldGenBulbTree worldGenAspenTallTrees;
-	protected static WorldGenBulbTree worldGenBirchTallTrees;
+	protected static WorldGenCustomTallTrees worldGenAspenTallTrees;
+	protected static WorldGenCustomTallTrees worldGenBirchTallTrees;
 	protected static WorldGenCustomTallTrees worldGenChestnutTallTrees;
 	protected static WorldGenDouglasFir worldGenDouglasFirTallTrees;
 	protected static WorldGenCustomTallTrees worldGenHickoryTallTrees;
@@ -58,8 +56,8 @@ public class TFCBiome extends BiomeGenBase
 	protected static WorldGenCustomTallTrees worldGenWhiteElmTallTrees;
 
 	protected static WorldGenCustomShortTrees worldGenAshShortTrees;
-	protected static WorldGenBulbTree worldGenAspenShortTrees;
-	protected static WorldGenBulbTree worldGenBirchShortTrees;
+	protected static WorldGenCustomShortTrees worldGenAspenShortTrees;
+	protected static WorldGenCustomShortTrees worldGenBirchShortTrees;
 	protected static WorldGenCustomShortTrees worldGenChestnutShortTrees;
 	protected static WorldGenDouglasFir worldGenDouglasFirShortTrees;
 	protected static WorldGenCustomShortTrees worldGenHickoryShortTrees;
@@ -89,8 +87,8 @@ public class TFCBiome extends BiomeGenBase
 
 		worldGenAcaciaKoaTrees = new WorldGenAcaciaKoaTrees(false,0);
 		worldGenAshTallTrees = new WorldGenCustomTallTrees(false,7);
-    	worldGenAspenTallTrees = new WorldGenBulbTree(1, TFCBlocks.logNatural, TFCBlocks.leaves, false, 15, 5, false);
-    	worldGenBirchTallTrees = new WorldGenBulbTree(2, TFCBlocks.logNatural, TFCBlocks.leaves, false, 15, 5, false);
+		worldGenAspenTallTrees = new WorldGenCustomTallTrees(false,1);
+		worldGenBirchTallTrees = new WorldGenCustomTallTrees(false,2);
 		worldGenChestnutTallTrees = new WorldGenCustomTallTrees(false,3);
 		worldGenDouglasFirTallTrees = new WorldGenDouglasFir(false,4, true);
 		worldGenHickoryTallTrees = new WorldGenCustomTallTrees(false,5);
@@ -104,8 +102,8 @@ public class TFCBiome extends BiomeGenBase
 		worldGenWhiteElmTallTrees = new WorldGenCustomTallTrees(false,13);
 
 		worldGenAshShortTrees = new WorldGenCustomShortTrees(false,7);
-    	worldGenAspenShortTrees = new WorldGenBulbTree(1, TFCBlocks.logNatural, TFCBlocks.leaves, false, 10, 3, false);
-    	worldGenBirchShortTrees = new WorldGenBulbTree(2, TFCBlocks.logNatural, TFCBlocks.leaves, false, 10, 3, false);
+		worldGenAspenShortTrees = new WorldGenCustomShortTrees(false,1);
+		worldGenBirchShortTrees = new WorldGenCustomShortTrees(false,2);
 		worldGenChestnutShortTrees = new WorldGenCustomShortTrees(false,3);
 		worldGenDouglasFirShortTrees = new WorldGenDouglasFir(false,4, false);
 		worldGenHickoryShortTrees = new WorldGenCustomShortTrees(false,5);
