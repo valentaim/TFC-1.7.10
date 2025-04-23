@@ -82,13 +82,12 @@ public class LOTRWorldGenWillow
       byte var24 = 4;
       
       for (int m = 0; m < var24; m++) {
-        int coords = i + MathHelper.func_76136_a(random, -12, 12);
-        int i2 = j + MathHelper.func_76136_a(random, -8, 4);
-        int k2 = k + MathHelper.func_76136_a(random, -12, 12);
+        int coords = i + MathHelper.getRandomIntegerInRange(random, -12, 12);
+        int i2 = j + MathHelper.getRandomIntegerInRange(random, -8, 4);
+        int k2 = k + MathHelper.getRandomIntegerInRange(random, -12, 12);
         //if (world.func_147439_a(coords, i2, k2).func_149688_o() == Material.field_151586_h) {
-        if (world.getBlock(coords, i2, k2).func_149688_o() == Material.field_151586_h) {
+        if (world.getBlock(coords, i2, k2).getMaterial() == Material.water) {
           var23 = true;
-          
           break;
         } 
       } 
@@ -98,14 +97,14 @@ public class LOTRWorldGenWillow
     }
     
     var21.onPlantGrow(world, i, j - 1, k, i, j, k);
-    ArrayList<ChunkCoordinates> var25 = new ArrayList<>();
+    ArrayList<ChunkCoordinates> var25 = new ArrayList<ChunkCoordinates>();
     int angle = 0;
     
     while (angle < 360) {
       angle += 30 + random.nextInt(30);
       float var26 = (float)Math.toRadians(angle);
-      float var27 = MathHelper.func_76126_a(var26);
-      float var28 = MathHelper.func_76134_b(var26);
+      float var27 = MathHelper.cos(var26);
+      float var28 = MathHelper.sin(var26);
       int k2 = j + height - 3 - random.nextInt(3);
       int rootX = 2 + random.nextInt(4);
       int rootY = i;
