@@ -2,6 +2,7 @@
 # Following settings: Gradle, intellij, eclipse
 ### Gradle ###
 .gradle
+!build/dirtyArtifacts/Waila-1.5.11-RC2-NONEI_1.7.10-dev.jar
 build/
 
 # Ignore Gradle GUI config
