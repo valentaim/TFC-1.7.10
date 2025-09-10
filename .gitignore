@@ -82,7 +82,3 @@ local.properties
 # Other
 *Thumbs.db
 .pmd
-src_tfc++/
-src_tfcv2/
-src_tfcv2_sumod/
-src_tfcv2_sumod_nodecomp/
